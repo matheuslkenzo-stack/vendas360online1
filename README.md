@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transforme Seu Conhecimento em Resultados</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #070707;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           FUNDO
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #ff6500;
+            filter: blur(180px);
+            opacity: .08;
+            top: -150px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+            padding: 18px 8%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(8,8,8,.94);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo span {
+            color: #ff6500;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #ff6500;
+        }
+
+        .header-btn {
+            text-decoration: none;
+            background: #ff6500;
+            color: white;
+
+            padding: 11px 20px;
+            border-radius: 7px;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+        .header-btn:hover {
+            background: #ff7a1c;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 680px;
+            padding: 90px 8%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,101,0,.15),
+                    transparent 45%
+                ),
+                #080808;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 9px 17px;
+
+            border-radius: 30px;
+
+            color: #ff7a1c;
+
+            background: rgba(255,101,0,.09);
+
+            border: 1px solid rgba(255,101,0,.35);
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 78px);
+            line-height: 1;
+            letter-spacing: -4px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ff6500;
+        }
+
+        .hero p {
+            color: #aaa;
+
+            max-width: 680px;
+
+            margin: auto;
+
+            font-size: 18px;
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+        }
+
+        /* =========================
+           BOTÕES
+        ========================= */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+
+            padding: 17px 30px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+        .btn-orange {
+            background: #ff6500;
+            color: white;
+
+            box-shadow:
+                0 10px 35px rgba(255,101,0,.2);
+        }
+
+        .btn-orange:hover {
+            background: #ff7b21;
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 45px rgba(255,101,0,.35);
+        }
+
+        .btn-dark {
+            background: #151515;
+            border: 1px solid #333;
+
+            color: white;
+        }
+
+        .btn-dark:hover {
+            border-color: #ff6500;
+            color: #ff6500;
+        }
+
+        /* =========================
+           BENEFÍCIOS
+        ========================= */
+
+        .benefits {
+            padding: 80px 8%;
+
+            background: #0c0c0c;
+
+            border-top: 1px solid #191919;
+            border-bottom: 1px solid #191919;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title small {
+            color: #ff6500;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            font-weight: bold;
+        }
+
+        .title h2 {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .cards {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .benefit-card {
+            padding: 30px;
+
+            background: #111;
+
+            border: 1px solid #242424;
+
+            border-radius: 14px;
+
+            transition: .3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-7px);
+
+            border-color: rgba(255,101,0,.5);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,101,0,.1);
+
+            border-radius: 10px;
+
+            font-size: 23px;
+
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: #888;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           OFERTAS
+        ========================= */
+
+        .offers {
+            padding: 100px 8%;
+
+            background: #080808;
+        }
+
+        .offers-grid {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        .offer {
+            background:
+                linear-gradient(
+                    145deg,
+                    #151515,
+                    #0d0d0d
+                );
+
+            border: 1px solid #292929;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: .3s;
+        }
+
+        .offer:hover {
+            transform: translateY(-7px);
+
+            border-color: #ff6500;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.5);
+        }
+
+        .offer::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 4px;
+
+            background: #ff6500;
+        }
+
+        .offer-label {
+            color: #ff6500;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .offer h3 {
+            font-size: 27px;
+
+            margin: 15px 0;
+        }
+
+        .offer p {
+            color: #888;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .offer ul {
+            list-style: none;
+
+            margin-bottom: 30px;
+        }
+
+        .offer li {
+            color: #ccc;
+
+            margin-bottom: 12px;
+
+            font-size: 14px;
+        }
+
+        .offer li::before {
+            content: "✓";
+
+            color: #ff6500;
+
+            font-weight: bold;
+
+            margin-right: 9px;
+        }
+
+        .offer-button {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            background: #ff6500;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+        .offer-button:hover {
+            background: #ff7b21;
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 100px 8%;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,101,0,.16),
+                    transparent 45%
+                ),
+                #080808;
+        }
+
+        .cta h2 {
+            font-size: 45px;
+
+            max-width: 800px;
+
+            margin: auto auto 20px;
+        }
+
+        .cta h2 span {
+            color: #ff6500;
+        }
+
+        .cta p {
+            color: #888;
+
+            max-width: 600px;
+
+            margin: auto auto 30px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 30px 8%;
+
+            background: #050505;
+
+            border-top: 1px solid #222;
+
+            text-align: center;
+        }
+
+        footer p {
+            color: #666;
+
+            font-size: 13px;
+        }
+
+        footer span {
+            color: #ff6500;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 75px 6%;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .cta h2 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .header-btn {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .title h2 {
+                font-size: 31px;
+            }
+
+            .offer {
+                padding: 27px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            Venda<span>Pro</span>
+        </div>
+
+        <nav>
+
+            <a href="#inicio">
+                Início
+            </a>
+
+            <a href="#beneficios">
+                Benefícios
+            </a>
+
+            <a href="#ofertas">
+                Ofertas
+            </a>
+
+        </nav>
+
+        <a
+            href="https://pay.kiwify.com.br/IuLXoda?afid=yZizDdiy"
+            target="_blank"
+            class="header-btn"
+        >
+            Quero conhecer
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🔥 COMECE SUA JORNADA DIGITAL
+            </div>
+
+            <h1>
+                Aprenda a vender
+                <span>produtos digitais.</span>
+            </h1>
+
+            <p>
+                Descubra conteúdos e estratégias para desenvolver
+                suas habilidades no mercado digital e começar a
+                construir suas próprias oportunidades online.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    href="https://pay.kiwify.com.br/IuLXoda?afid=yZizDdiy"
+                    target="_blank"
+                    class="btn btn-orange"
+                >
+                    🚀 QUERO COMEÇAR AGORA
+                </a>
+
+                <a
+                    href="#ofertas"
+                    class="btn btn-dark"
+                >
+                    Ver opções
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BENEFÍCIOS
+    ========================= -->
+
+    <section class="benefits" id="beneficios">
+
+        <div class="title">
+
+            <small>
+                Por que começar?
+            </small>
+
+            <h2>
+                Conhecimento que você pode aplicar
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="benefit-card">
+
+                <div class="icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Estratégias
+                </h3>
+
+                <p>
+                    Conheça estratégias e conceitos utilizados
+                    no mercado de produtos digitais.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="icon">
+                    📈
+                </div>
+
+                <h3>
+                    Marketing
+                </h3>
+
+                <p>
+                    Aprenda mais sobre divulgação, posicionamento
+                    e construção de ofertas.
+                </p>
+
+            </div>
+
+
+            <div class="benefit-card">
+
+                <div class="icon">
+                    💡
+                </div>
+
+                <h3>
+                    Novas ideias
+                </h3>
+
+                <p>
+                    Desenvolva novas ideias e encontre formas
+                    de transformar conhecimento em produtos.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OFERTAS
+    ========================= -->
+
+    <section class="offers" id="ofertas">
+
+        <div class="title">
+
+            <small>
+                Escolha seu próximo passo
+            </small>
+
+            <h2>
+                Comece sua transformação
+            </h2>
+
+        </div>
+
+
+        <div class="offers-grid">
+
+
+            <!-- OFERTA 1 -->
+
+            <div class="offer">
+
+                <span class="offer-label">
+                    Oportunidade
+                </span>
+
+                <h3>
+                    Conheça a primeira opção
+                </h3>
+
+                <p>
+                    Acesse a página e conheça todos os detalhes
+                    da oferta antes de tomar sua decisão.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Acesso à oferta
+                    </li>
+
+                    <li>
+                        Informações completas
+                    </li>
+
+                    <li>
+                        Conteúdo digital
+                    </li>
+
+                    <li>
+                        Acesso online
+                    </li>
+
+                </ul>
+
+                <a
+                    href="https://pay.kiwify.com.br/IuLXoda?afid=yZizDdiy"
+                    target="_blank"
+                    class="offer-button"
+                >
+                    CONHECER AGORA →
+                </a>
+
+            </div>
+
+
+            <!-- OFERTA 2 -->
+
+            <div class="offer">
+
+                <span class="offer-label">
+                    Outra opção
+                </span>
+
+                <h3>
+                    Descubra esta oportunidade
+                </h3>
+
+                <p>
+                    Confira a segunda opção disponível e veja
+                    se ela faz sentido para os seus objetivos.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Acesso online
+                    </li>
+
+                    <li>
+                        Informações da oferta
+                    </li>
+
+                    <li>
+                        Conteúdo digital
+                    </li>
+
+                    <li>
+                        Acesso pela internet
+                    </li>
+
+                </ul>
+
+                <a
+                    href="https://kiwify.app/upSKfJx?afid=yZizDdiy"
+                    target="_blank"
+                    class="offer-button"
+                >
+                    CONHECER AGORA →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA FINAL
+    ========================= -->
+
+    <section class="cta">
+
+        <h2>
+            Pronto para dar o
+            <span>próximo passo?</span>
+        </h2>
+
+        <p>
+            Conheça as opções disponíveis e escolha aquela
+            que mais combina com seus objetivos.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="https://pay.kiwify.com.br/IuLXoda?afid=yZizDdiy"
+                target="_blank"
+                class="btn btn-orange"
+            >
+                🚀 ACESSAR AGORA
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>VendaPro</span> — Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
+```
